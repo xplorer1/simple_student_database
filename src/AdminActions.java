@@ -30,8 +30,5 @@ public class AdminActions {
         System.out.println();
         Student student = new Student();
         student.displayStudentList();
-
-        //System.out.println("Student name: " + student.getName() + ".\nStudent year: " + student.getGradeYear() );
-
     }
 }

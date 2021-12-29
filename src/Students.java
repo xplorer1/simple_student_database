@@ -26,6 +26,10 @@ class Student {
         studentArray.add(new Student(name, year, id));
     }
 
+    public boolean searchStudentList(Student student) {
+        return studentArray.contains(student);
+    }
+
     public void displayStudentList() {
         for (Student std : studentArray) {
             System.out.println("=========================");
@@ -45,8 +49,24 @@ class Student {
         this.balance -= amount;
     }
 
+    public void enrollInCourse(String course) {
+
+    }
+
+    public void displayCourses() {
+
+    }
+
+    public void displayStudent(Student std) {
+
+    }
+
     public String getName() {
         return name;
+    }
+
+    public double getBalance() {
+        return balance;
     }
 
     public void setName(String name) {
