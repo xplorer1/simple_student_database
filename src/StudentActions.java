@@ -1,17 +1,10 @@
 import java.util.Scanner;
 
 public class StudentActions {
-    private String activeStudentName;
 
     public void signIn(String name, int gradeYear, String studentId) {
-        Student student = new Student();
-        this.activeStudentName = name;
-
-        if(student.searchStudentList(new Student(name, gradeYear, studentId))) {
-            startStudentActions(student);
-        } else {
-            System.out.println("You have provided invalid user details.");
-        }
+        Student student = new Student(name, gradeYear, studentId);
+        startStudentActions(student);
     }
 
     public void startStudentActions(Student student) {
@@ -37,6 +30,7 @@ public class StudentActions {
 
             Scanner optionScanner = new Scanner(System.in);
             option = optionScanner.next().charAt(0);
+            optionScanner.nextLine();
             option = Character.toUpperCase(option);
 
             System.out.println();
@@ -54,11 +48,14 @@ public class StudentActions {
                     System.out.println("Enter course to enroll in:");
                     String course = optionScanner.nextLine();
 
-                    student.enrollInCourse(course);
-                    System.out.println("Your courses are: ");
+                    if(student.getBalance() < Student.CourseCost) System.out.println("Insufficient balance. You need to fund your account.");
+                    else {
+                        student.enrollInCourse(course);
+                        System.out.println("Your courses are: ");
 
-                    student.displayCourses();
-                    System.out.println("================================");
+                        student.displayCourses();
+                        System.out.println("================================");
+                    }
                 }
                 case 'C' -> {
                     System.out.println("===============================");
@@ -66,10 +63,11 @@ public class StudentActions {
                     double withdrawAmount = optionScanner.nextDouble();
 
                     if(student.getBalance() < withdrawAmount) System.out.println("Invalid input. You need to fund your account.");
-
-                    student.payTuition(withdrawAmount);
-                    System.out.println("Your balance is now " + student.getBalance());
-                    System.out.println("================================");
+                    else {
+                        student.payTuition(withdrawAmount);
+                        System.out.println("Your balance is now " + student.getBalance());
+                        System.out.println("================================");
+                    }
                 }
                 case 'D' -> {
                     System.out.println("===============================");

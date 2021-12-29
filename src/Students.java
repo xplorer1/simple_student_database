@@ -9,7 +9,7 @@ class Student {
     private double balance = 0;
     private ArrayList<String> courses = new ArrayList<>();
     private static ArrayList<Student> studentArray = new ArrayList<>();
-    private static final int CourseCost = 600;
+    public static final int CourseCost = 600;
     private static Integer userId = 1000;
 
     public Student() {};
@@ -50,7 +50,8 @@ class Student {
     }
 
     public void enrollInCourse(String course) {
-        courses.add(course);
+        if(this.balance > CourseCost) courses.add(course);
+        else System.out.println("You have insufficient balance.");
     }
 
     public void displayCourses() {
@@ -66,8 +67,11 @@ class Student {
         System.out.println("Name: " + std.name);
         System.out.println("Grade Year: " + std.gradeYear);
         System.out.println("Student ID: " + std.studentId);
+        System.out.println("Balance: " + std.balance);
 
         System.out.println();
+
+        this.displayCourses();
     }
 
     public String getName() {
