@@ -50,15 +50,24 @@ class Student {
     }
 
     public void enrollInCourse(String course) {
-
+        courses.add(course);
     }
 
     public void displayCourses() {
-
+        for (String crs : courses) {
+            System.out.println("=========================");
+            System.out.println("Name: " + crs);
+            System.out.println();
+        }
     }
 
     public void displayStudent(Student std) {
+        System.out.println("=========================");
+        System.out.println("Name: " + std.name);
+        System.out.println("Grade Year: " + std.gradeYear);
+        System.out.println("Student ID: " + std.studentId);
 
+        System.out.println();
     }
 
     public String getName() {

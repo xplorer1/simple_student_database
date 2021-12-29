@@ -27,7 +27,8 @@ public class StudentActions {
         System.out.println("B. Enroll in a course.");
         System.out.println("C. Pay tuition.");
         System.out.println("D. Fund account.");
-        System.out.println("E. Exit.");
+        System.out.println("E. View profile.");
+        System.out.println("F. Exit.");
 
         do {
 
@@ -83,11 +84,16 @@ public class StudentActions {
                 }
                 case 'E' -> {
                     System.out.println("====================================");
+                    student.displayStudent(student);
+                    System.out.println("====================================");
+                }
+                case 'F' -> {
+                    System.out.println("====================================");
                     System.out.println("Good bye...");
                     System.out.println("====================================");
                 }
                 default -> System.out.println("Error: invalid option. Please enter A, B, C, D, or E to exit.");
             }
-        } while (option != 'E');
+        } while (option != 'F');
     }
 }
